@@ -1,0 +1,75 @@
+{
+    "name": "RSS Mirror Feeder Bot",
+    "description": "A bot which feeds URLs from Feeds for Auto RSS Mirror.",
+    "keywords": [
+        "telegram",
+        "RSS Feed",
+        "Bot"
+    ],
+    "repository": "https://github.com/missemily2022/RSSMirrorFeeder",
+    "success_url": "https://telegram.me/missemily2022",
+    "env": {
+        "ENV": {
+            "description": "idk",
+            "value": "ANYTHING",
+            "required": false
+        },
+        "BOT_TOKEN": {
+            "description": "Get it by creating a Telegram bot on BotFather",
+            "value": "",
+            "required": true
+        },
+        "API_ID": {
+            "description": "Get it from my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Get it from my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        "LOG_CHANNEL": {
+            "description": "Telegram Channel/group/user ID where the bot have to send RSS Feeds",
+            "value": "",
+            "required": true
+        },
+        "FEED_URLS": {
+            "description": "List of URLs of RSS Feed, separated by | vertical bar",
+            "value": "",
+            "required": true
+        },
+        "INTERVAL": {
+            "description": "Checking Interval in seconds.",
+            "value": "10",
+            "required": false
+        },
+        "MAX_INSTANCES": {
+            "description": "Max instances to be used while checking RSS feed.",
+            "value": "3",
+            "required": false
+        },
+        "MIRROR_CMD": {
+            "description": "if you have changed default cmd of mirror bot, replace this.",
+            "value": "/qbmirror",
+            "required": false
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "addons": [
+        {
+            "plan": "heroku-postgresql"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "stack": "heroku-20"
+}
