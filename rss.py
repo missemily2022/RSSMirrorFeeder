@@ -11,7 +11,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 try:
     api_id = int(os.environ["API_ID"])   # Get it from my.telegram.org
     api_hash = os.environ["API_HASH"]   # Get it from my.telegram.org
-    feed_urls = list(set(i for i in os.environ["FEED_URLS"].split("|")))  # RSS Feed URL of the site.
+    feed_urls = list(set(os.environ["FEED_URLS"].split("|")))
     bot_token = os.environ["BOT_TOKEN"]   # Get it by creating a bot on https://t.me/botfather
     log_channel = int(os.environ["LOG_CHANNEL"])   # Telegram Channel ID where the bot is added and have write permission. You can use group ID too.
     check_interval = int(os.environ.get("INTERVAL", 10))   # Check Interval in seconds.  
@@ -24,7 +24,7 @@ except Exception as e:
 
 
 for feed_url in feed_urls:
-    if db.get_link(feed_url) == None:
+    if db.get_link(feed_url) is None:
         db.update_link(feed_url, "*")
 
 
